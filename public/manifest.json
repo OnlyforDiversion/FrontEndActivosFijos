@@ -1,0 +1,27 @@
+{
+  "name": "SisActivos",
+  "short_name": "App",
+  "description": "App de Gestión de activos fijos de la EMI",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/logooo_emi.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logooo_emi.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/logooo_emi.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
