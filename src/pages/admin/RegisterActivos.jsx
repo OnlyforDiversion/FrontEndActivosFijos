@@ -451,6 +451,7 @@ const RegisterActivos = ({ onClose, onSave }) => {
           </div>
         )}
       </div>
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar newestOnTop closeOnClick rtl pauseOnFocusLoss draggable pauseOnHover />
     </div>
   );
 };
