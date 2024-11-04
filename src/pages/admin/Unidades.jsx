@@ -248,7 +248,7 @@ export default function Personal() {
           <div className="flex-grow">
             <input
               type="text"
-              placeholder="Buscar personal......"
+              placeholder="Buscar personal..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="w-full p-2 border border-gray-300 rounded-md"
