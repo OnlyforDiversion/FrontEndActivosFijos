@@ -525,43 +525,74 @@ function DevolucionActivos() {
   const devolucionesPorUnidadOptions = {
     title: {
       text: 'Devoluciones por Unidad',
-      left: 'center'
+      left: 'center',
+      top: 10,
+      textStyle: {
+        fontSize: 18,
+        fontWeight: 'bold',
+      },
     },
     tooltip: {
       trigger: 'item',
-      formatter: '{a} <br/>{b}: {c} ({d}%)'
+      formatter: '{a} <br/>{b}: {c} devoluciones ({d}%)',
     },
     legend: {
-      orient: 'vertical',
-      left: 'left',
+      type: 'scroll', // Permitir desplazamiento si hay muchas leyendas
+      orient: 'horizontal', // Cambia a vertical automáticamente si es necesario
+      bottom: 0,
+      align: 'auto',
+      textStyle: {
+        fontSize: 12,
+      },
+      formatter: name => (name.length > 10 ? `${name.slice(0, 10)}...` : name), // Limitar texto de la leyenda
+      tooltip: {
+        show: true,
+        formatter: '{name}', // Mostrar nombre completo al pasar el mouse
+      },
     },
     series: [
       {
         name: 'Devoluciones',
         type: 'pie',
-        radius: ['50%', '70%'],
-        avoidLabelOverlap: false,
+        radius: ['40%', '65%'], // Reducir el tamaño del gráfico
+        center: ['50%', '50%'],
+        avoidLabelOverlap: true,
+        itemStyle: {
+          borderRadius: 8,
+          shadowBlur: 5,
+          shadowOffsetX: 0,
+          shadowColor: 'rgba(0, 0, 0, 0.3)',
+        },
         label: {
-          show: false,
-          position: 'center'
+          show: false, // Ocultar etiquetas internas para evitar ruido visual
+          position: 'inside',
+          formatter: '{b}\n{d}%', // Mostrar nombre y porcentaje
         },
         emphasis: {
           label: {
             show: true,
-            fontSize: '20',
-            fontWeight: 'bold'
-          }
+            fontSize: 16,
+            fontWeight: 'bold',
+            formatter: '{b}: {c} devoluciones ({d}%)',
+          },
         },
         labelLine: {
-          show: false
+          show: true,
+          length: 20,
+          length2: 10,
+          smooth: true,
         },
         data: unidades.map(unidad => ({
           name: unidad,
-          value: filteredDevoluciones.filter(d => d.personal.unidad.nombre === unidad).length
-        }))
-      }
-    ]
+          value: filteredDevoluciones.filter(
+            d => d.personal.unidad.nombre === unidad
+          ).length,
+        })),
+      },
+    ],
   };
+  
+  
 
   // ECharts options for Devoluciones por Estado
   const devolucionesPorEstadoOptions = {

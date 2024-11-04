@@ -122,11 +122,11 @@ export default function Personal() {
         unidades[p.unidad.nombre] = 1;
       }
     });
-
+  
     const data = Object.entries(unidades)
       .map(([name, value]) => ({ name, value }))
       .sort((a, b) => b.value - a.value);
-
+  
     return {
       tooltip: {
         trigger: 'item',
@@ -134,19 +134,24 @@ export default function Personal() {
       },
       legend: {
         orient: 'vertical',
-        left: 10,
-        top: 'center',
+        left: '5%',
+        top: 'middle',
         type: 'scroll',
         textStyle: {
           fontSize: 12
-        }
+        },
+        pageTextStyle: {
+          color: '#888'
+        },
+        pageIconColor: '#888',
+        pageIconInactiveColor: '#aaa'
       },
       series: [
         {
           name: 'Distribución de Personal',
           type: 'pie',
           radius: ['40%', '70%'],
-          center: ['60%', '50%'],
+          center: ['65%', '50%'],
           avoidLabelOverlap: true,
           itemStyle: {
             borderRadius: 10,

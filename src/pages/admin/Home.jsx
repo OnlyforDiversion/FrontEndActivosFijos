@@ -60,7 +60,7 @@ const Dashboard = () => {
           upcomingDepreciations: upcomingDepreciations.data.upcomingDepreciations,
         });
 
-        message.success('Datos del dashboard cargados correctamente');
+        message.success('Datos del reporte cargados correctamente');
       } catch (error) {
         console.error("Error fetching dashboard data:", error);
         notification.error({
@@ -144,7 +144,7 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <header className="bg-emi_azul text-emi_amarillo p-4 rounded-lg shadow-md mb-6">
-        <h1 className="text-3xl font-bold">Dashboard de Gestión de Activos Fijos</h1>
+        <h1 className="text-3xl font-bold">Reportes de Gestión de Activos Fijos</h1>
       </header>
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">

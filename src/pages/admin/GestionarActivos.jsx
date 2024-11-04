@@ -296,20 +296,22 @@ export default function AssetManagement() {
     },
     legend: {
       orient: 'horizontal',
-      top: 'bottom',
-      align: 'auto',
+      bottom: '10px',
+      left: 'center',
       itemWidth: 10,
       itemHeight: 10,
       textStyle: {
         fontSize: 12
-      }
+      },
+      type: 'scroll'
     },
     series: [
       {
         name: 'Asignaciones',
-        type:  'pie',
-        radius: ['50%', '70%'],
-        avoidLabelOverlap: false,
+        type: 'pie',
+        radius: ['40%', '70%'],
+        center: ['50%', '50%'],
+        avoidLabelOverlap: true,
         label: {
           show: false,
           position: 'center'
@@ -332,7 +334,6 @@ export default function AssetManagement() {
           }))
       }
     ],
-    responsive: true,
     grid: {
       containLabel: true
     }
