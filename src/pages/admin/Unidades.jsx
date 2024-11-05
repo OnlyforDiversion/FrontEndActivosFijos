@@ -152,15 +152,27 @@ export default function Personal() {
           type: 'pie',
           radius: ['40%', '70%'],
           center: ['65%', '50%'],
-          avoidLabelOverlap: true,
+          avoidLabelOverlap: false,
           itemStyle: {
             borderRadius: 10,
             borderColor: '#fff',
             borderWidth: 2
           },
           label: {
-            show: false,
-            position: 'center'
+            show: true,
+            position: 'outside', // Muestra etiquetas fuera del gráfico
+            formatter: '{b|{b}: }{c}  ({d}%)',
+            rich: {
+              b: {
+                fontSize: 12,
+                lineHeight: 20
+              }
+            }
+          },
+          labelLine: {
+            show: true, // Muestra la línea de etiqueta
+            length: 15,
+            length2: 10
           },
           emphasis: {
             label: {
@@ -169,14 +181,12 @@ export default function Personal() {
               fontWeight: 'bold'
             }
           },
-          labelLine: {
-            show: false
-          },
           data: data
         }
       ]
     };
   }, [personal]);
+  
 
   const activosVsInactivosOption = useMemo(() => {
     const activos = personal.filter(p => p.activo).length;
