@@ -205,7 +205,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      {renderChart("Comparación de Métodos de Depreciación", (
+      {renderChart("Grafico de Depreciación Mensual", (
         <ResponsiveContainer width="100%" height={300}>
           <LineChart data={dashboardData.depreciationComparison}>
             <XAxis dataKey="month" />
