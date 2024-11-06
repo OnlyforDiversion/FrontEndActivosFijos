@@ -114,78 +114,60 @@ export default function Personal() {
   };
 
   const distribucionPersonalOption = useMemo(() => {
-    const unidades = {};
-    personal.forEach(p => {
-      if (unidades[p.unidad.nombre]) {
-        unidades[p.unidad.nombre]++;
-      } else {
-        unidades[p.unidad.nombre] = 1;
-      }
-    });
-  
-    const data = Object.entries(unidades)
-      .map(([name, value]) => ({ name, value }))
-      .sort((a, b) => b.value - a.value);
-  
-    return {
-      tooltip: {
-        trigger: 'item',
-        formatter: '{a} <br/>{b}: {c} ({d}%)'
-      },
-      legend: {
-        orient: 'vertical',
-        left: '5%',
-        top: 'middle',
-        type: 'scroll',
-        textStyle: {
-          fontSize: 12
+  const unidades = {};
+  personal.forEach(p => {
+    if (unidades[p.unidad.nombre]) {
+      unidades[p.unidad.nombre]++;
+    } else {
+      unidades[p.unidad.nombre] = 1;
+    }
+  });
+
+  const data = Object.entries(unidades)
+    .map(([name, value]) => ({ name, value }))
+    .sort((a, b) => b.value - a.value);
+
+  return {
+    tooltip: {
+      trigger: 'item',
+      formatter: '{a} <br/>{b}: {c} ({d}%)'
+    },
+    series: [
+      {
+        name: 'Distribución de Personal',
+        type: 'pie',
+        radius: ['50%', '70%'],
+        center: ['60%', '50%'],
+        avoidLabelOverlap: false,
+        itemStyle: {
+          borderRadius: 5,
+          borderColor: '#fff',
+          borderWidth: 1,
         },
-        pageTextStyle: {
-          color: '#888'
+        label: {
+          show: true,
+          position: 'outside',
+          formatter: '{b}',
+          fontSize: 8,
         },
-        pageIconColor: '#888',
-        pageIconInactiveColor: '#aaa'
-      },
-      series: [
-        {
-          name: 'Distribución de Personal',
-          type: 'pie',
-          radius: ['40%', '70%'],
-          center: ['65%', '50%'],
-          avoidLabelOverlap: false,
-          itemStyle: {
-            borderRadius: 10,
-            borderColor: '#fff',
-            borderWidth: 2
-          },
+        labelLine: {
+          show: true,
+          length: 15,
+          length2: 10,
+        },
+        emphasis: {
           label: {
             show: true,
-            position: 'outside', // Muestra etiquetas fuera del gráfico
-            formatter: '{b|{b}: }{c}  ({d}%)',
-            rich: {
-              b: {
-                fontSize: 12,
-                lineHeight: 20
-              }
-            }
+            fontSize: '8',
+            fontWeight: 'bold',
           },
-          labelLine: {
-            show: true, // Muestra la línea de etiqueta
-            length: 15,
-            length2: 10
-          },
-          emphasis: {
-            label: {
-              show: true,
-              fontSize: '18',
-              fontWeight: 'bold'
-            }
-          },
-          data: data
-        }
-      ]
-    };
-  }, [personal]);
+        },
+        data: data,
+      }
+    ]
+  };
+}, [personal]);
+
   
 
   const activosVsInactivosOption = useMemo(() => {
